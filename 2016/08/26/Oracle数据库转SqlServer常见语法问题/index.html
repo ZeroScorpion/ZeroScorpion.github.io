@@ -15,16 +15,31 @@
 
 
 
-<meta name="description" content="Oracle数据库转SqlServer常见语法问题Oracle函数对照SqlServer函数">
+<meta name="description" content="##Oracle函数对照SqlServer函数
+
+######to_char()与convert()的用法对比
+  Oracle中的to_char()函数：  将时间类型的数据（date、timestamp）转化成特定格式的字符串，  如： 
+
+to_char ( date ,’ 格式 ‘ );">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tomorrow">
+<meta property="og:title" content="Oracle数据库转SqlServer常见语法问题">
 <meta property="og:url" content="http://yoursite.com/2016/08/26/Oracle数据库转SqlServer常见语法问题/index.html">
 <meta property="og:site_name" content="Tomorrow">
-<meta property="og:description" content="Oracle数据库转SqlServer常见语法问题Oracle函数对照SqlServer函数">
-<meta property="og:updated_time" content="2016-08-26T00:28:42.629Z">
+<meta property="og:description" content="##Oracle函数对照SqlServer函数
+
+######to_char()与convert()的用法对比
+  Oracle中的to_char()函数：  将时间类型的数据（date、timestamp）转化成特定格式的字符串，  如： 
+
+to_char ( date ,’ 格式 ‘ );">
+<meta property="og:updated_time" content="2016-08-26T16:33:16.467Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tomorrow">
-<meta name="twitter:description" content="Oracle数据库转SqlServer常见语法问题Oracle函数对照SqlServer函数">
+<meta name="twitter:title" content="Oracle数据库转SqlServer常见语法问题">
+<meta name="twitter:description" content="##Oracle函数对照SqlServer函数
+
+######to_char()与convert()的用法对比
+  Oracle中的to_char()函数：  将时间类型的数据（date、timestamp）转化成特定格式的字符串，  如： 
+
+to_char ( date ,’ 格式 ‘ );">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +71,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tomorrow</title>
+<title>Oracle数据库转SqlServer常见语法问题 | Tomorrow</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -183,7 +198,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle-SqlServer/">Oracle SqlServer</a></li></ul>
                     </div>
                 </section>
                 
@@ -264,7 +279,7 @@
   
     <div class="article-meta">
       <a href="/2016/08/26/Oracle数据库转SqlServer常见语法问题/" class="article-date">
-      <time datetime="2016-08-26T00:28:22.666Z" itemprop="datePublished">2016-08-26</time>
+      <time datetime="2016-08-26T15:23:23.000Z" itemprop="datePublished">2016-08-26</time>
 </a>
 
 
@@ -275,12 +290,52 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Oracle数据库转SqlServer常见语法问题
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle-SqlServer/">Oracle SqlServer</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Oracle数据库转SqlServer常见语法问题"><a href="#Oracle数据库转SqlServer常见语法问题" class="headerlink" title="Oracle数据库转SqlServer常见语法问题"></a>Oracle数据库转SqlServer常见语法问题</h2><p>Oracle函数对照SqlServer函数<br><a id="more"></a></p>
+        <p>##Oracle函数对照SqlServer函数</p>
 <ul>
-<li><code>to_char()</code>的用法<br>常见用法：<br> 1.对时间类型的数据（<code>date</code>、<code>timestamp</code>）进行格式转换<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">to_char(select_date,<span class="string">'yyyy-MM-dd HH24:mi:ss'</span>)</div><div class="line">to_char(select_date,<span class="string">'yyyy-MM-dd'</span>)</div></pre></td></tr></table></figure></li>
+<li><p>######<strong><code>to_char()</code>与<code>convert()</code>的用法对比</strong></p>
+<p>  Oracle中的<code>to_char()</code>函数：<br>  将时间类型的数据（<code>date</code>、<code>timestamp</code>）转化成特定格式的字符串，<br>  如： </p>
+<blockquote>
+<p>to_char ( date ,’ 格式 ‘ ); </p>
+<a id="more"></a>
+<pre><code class="sql">to_char(select_date,'yyyy-MM-dd HH24:mi:ss')
+to_char(select_date,'yyyy-MM-dd')
+</code></pre>
+<p>  SqlServer中的<code>convert()</code>函数：<br>  convert() 函数是把日期转换为新数据类型的通用函数,<br>  如：<br>convert( data_type(length) ,data_to_be_converted , style )</p>
+</blockquote>
+<p>  将上文中的to_char语句转化成convert（）函数来实现：</p>
+<pre><code class="sql">convert(varchar(19),select_date,20)
+convert(varchar(10),select_date,120)
+</code></pre>
+<p>  convert（）函数中的style规定了转化的数据格式，SqlServer中规定好的style如下：</p>
+<p>  | Style ID | Style 格式 |<br>  | ——–   | :—-:  |<br>  |100 或者 0| mon dd yyyy hh:miAM （或者 PM） |<br>  |101| mm/dd/yy |<br>  |102| yy.mm.dd |<br>  |103 |dd/mm/yy |<br>  |104 |dd.mm.yy |<br>  |105 |dd-mm-yy |<br>  |106 ||dd mon yy |<br>  |107 |Mon dd, yy |<br>  |108 |hh:mm:ss |<br>  |109 或者 9 |mon dd yyyy hh:mi:ss:mmmAM（或者 PM） |<br>  |110 |mm-dd-yy |<br>  |111 |yy/mm/dd |<br>  |112 |yymmdd |<br>  |113 或者 13 |dd mon yyyy hh:mm:ss:mmm(24h) |<br>  |114 |hh:mi:ss:mmm(24h) ||<br>  |120 或者 20 |yyyy-mm-dd hh:mi:ss(24h) |<br>  |121 或者 21| yyyy-mm-dd hh:mi:ss.mmm(24h) |<br>  |126 |yyyy-mm-ddThh:mm:ss.mmm（没有空格） |<br>  |130 |dd mon yyyy hh:mi:ss:mmmAM |<br>  |131 |dd/mm/yy hh:mi:ss:mmmAM |</p>
+</li>
+<li><p>######<strong><code>sysdate</code>与<code>getdate()</code>的用法对比</strong><br>  Oracle数据库中系统的当前时间可以通过sysdate来获取，而在SqlServer中获取系统时间的方法为getdate（）。</p>
+</li>
 </ul>
 
       
@@ -290,12 +345,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/08/26/Oracle数据库转SqlServer常见语法问题/"></a></p>
+        <p><span>本文标题:</span><a href="/2016/08/26/Oracle数据库转SqlServer常见语法问题/">Oracle数据库转SqlServer常见语法问题</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Zero</a></p>
-        <p><span>发布时间:</span>2016-08-26, 08:28:22</p>
-        <p><span>最后更新:</span>2016-08-26, 08:28:42</p>
+        <p><span>发布时间:</span>2016-08-26, 23:23:23</p>
+        <p><span>最后更新:</span>2016-08-27, 00:33:16</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/08/26/Oracle数据库转SqlServer常见语法问题/" title="">http://yoursite.com/2016/08/26/Oracle数据库转SqlServer常见语法问题/</a>
+            <span>原始链接:</span><a class="post-url" href="/2016/08/26/Oracle数据库转SqlServer常见语法问题/" title="Oracle数据库转SqlServer常见语法问题">http://yoursite.com/2016/08/26/Oracle数据库转SqlServer常见语法问题/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/08/26/Oracle数据库转SqlServer常见语法问题/　　作者: Zero" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -323,7 +378,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Oracle数据库转SqlServer常见语法问题"><span class="toc-number">1.</span> <span class="toc-text">Oracle数据库转SqlServer常见语法问题</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -359,7 +414,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"　| Tomorrow　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Oracle数据库转SqlServer常见语法问题　| Tomorrow　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
