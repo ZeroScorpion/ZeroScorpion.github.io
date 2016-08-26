@@ -15,12 +15,28 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="title: Oracle数据库转SqlServer常见语法问题date: 2016-08-26 23:23:23
+tags: Oracle SqlServer##Oracle函数对照SqlServer函数
+
+######to_char()与convert()的用法对比
+  Oracle中的to_char()函数：  将时间类型的数据（date、timestamp）转化成特定格式的字符串，  如：">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Tomorrow">
-<meta property="og:url" content="http://yoursite.com/archives/2016/08/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/08/27/Oracle数据库转SqlServer常见语法问题/index.html">
 <meta property="og:site_name" content="Tomorrow">
+<meta property="og:description" content="title: Oracle数据库转SqlServer常见语法问题date: 2016-08-26 23:23:23
+tags: Oracle SqlServer##Oracle函数对照SqlServer函数
+
+######to_char()与convert()的用法对比
+  Oracle中的to_char()函数：  将时间类型的数据（date、timestamp）转化成特定格式的字符串，  如：">
+<meta property="og:updated_time" content="2016-08-26T16:27:52.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomorrow">
+<meta name="twitter:description" content="title: Oracle数据库转SqlServer常见语法问题date: 2016-08-26 23:23:23
+tags: Oracle SqlServer##Oracle函数对照SqlServer函数
+
+######to_char()与convert()的用法对比
+  Oracle中的to_char()函数：  将时间类型的数据（date、timestamp）转化成特定格式的字符串，  如：">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +68,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2016/8 | Tomorrow</title>
+<title>Tomorrow</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,8 +78,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -256,75 +272,167 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Oracle数据库转SqlServer常见语法问题" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/08/27/Oracle数据库转SqlServer常见语法问题/" class="archive-article-date">
-      <time datetime="2016-08-26T16:27:36.349Z" itemprop="datePublished">08-27</time>
+    <div class="article-meta">
+      <a href="/2016/08/27/Oracle数据库转SqlServer常见语法问题/" class="article-date">
+      <time datetime="2016-08-26T16:27:36.349Z" itemprop="datePublished">2016-08-27</time>
 </a>
 
 
-        </div>
-         
-        <div class="article-info info-on-archive">
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
           
+        <h2 id=""><a href="#" class="headerlink" title=""></a><ul id="tree" class="ztree"></ul><article class="markdown-body"></article></h2><p>title: Oracle数据库转SqlServer常见语法问题<br>date: 2016-08-26 23:23:23</p>
+<h2 id="tags-Oracle-SqlServer"><a href="#tags-Oracle-SqlServer" class="headerlink" title="tags: Oracle SqlServer"></a>tags: Oracle SqlServer</h2><p>##Oracle函数对照SqlServer函数</p>
+<ul>
+<li><p>######<strong><code>to_char()</code>与<code>convert()</code>的用法对比</strong></p>
+<p>  Oracle中的<code>to_char()</code>函数：<br>  将时间类型的数据（<code>date</code>、<code>timestamp</code>）转化成特定格式的字符串，<br>  如： </p>
+<blockquote>
+<p>to_char ( date ,’ 格式 ‘ ); </p>
+<a id="more"></a>
+<pre><code class="sql">to_char(select_date,'yyyy-MM-dd HH24:mi:ss')
+to_char(select_date,'yyyy-MM-dd')
+</code></pre>
+<p>  SqlServer中的<code>convert()</code>函数：<br>  convert() 函数是把日期转换为新数据类型的通用函数,<br>  如：<br>convert( data_type(length) ,data_to_be_converted , style )</p>
+</blockquote>
+<p>  将上文中的to_char语句转化成convert（）函数来实现：</p>
+<pre><code class="sql">convert(varchar(19),select_date,20)
+convert(varchar(10),select_date,120)
+</code></pre>
+<p>  convert（）函数中的style规定了转化的数据格式，SqlServer中规定好的style如下：</p>
+<p>  | Style ID | Style 格式 |<br>  | ——–   | :—-:  |<br>  |100 或者 0| mon dd yyyy hh:miAM （或者 PM） |<br>  |101| mm/dd/yy |<br>  |102| yy.mm.dd |<br>  |103 |dd/mm/yy |<br>  |104 |dd.mm.yy |<br>  |105 |dd-mm-yy |<br>  |106 ||dd mon yy |<br>  |107 |Mon dd, yy |<br>  |108 |hh:mm:ss |<br>  |109 或者 9 |mon dd yyyy hh:mi:ss:mmmAM（或者 PM） |<br>  |110 |mm-dd-yy |<br>  |111 |yy/mm/dd |<br>  |112 |yymmdd |<br>  |113 或者 13 |dd mon yyyy hh:mm:ss:mmm(24h) |<br>  |114 |hh:mi:ss:mmm(24h) ||<br>  |120 或者 20 |yyyy-mm-dd hh:mi:ss(24h) |<br>  |121 或者 21| yyyy-mm-dd hh:mi:ss.mmm(24h) |<br>  |126 |yyyy-mm-ddThh:mm:ss.mmm（没有空格） |<br>  |130 |dd mon yyyy hh:mi:ss:mmmAM |<br>  |131 |dd/mm/yy hh:mi:ss:mmmAM |</p>
+</li>
+<li><p>######<strong><code>sysdate</code>与<code>getdate()</code>的用法对比</strong><br>  Oracle数据库中系统的当前时间可以通过sysdate来获取，而在SqlServer中获取系统时间的方法为getdate（）。</p>
+</li>
+</ul>
+<script type="text/javascript" src="http://i5ting.github.io/git-quick-start/preview/js/jquery-1.10.2.min.js"></script><script type="text/javascript" src="http://i5ting.github.io/git-quick-start/preview/js/jquery.ztree.all-3.5.min.js"></script><script type="text/javascript" src="http://i5ting.github.io/git-quick-start/preview/js/jquery.ztree_toc.js"></script>
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<script type="text/javascript"> <!-- $(document).ready(function(){ $('#tree').ztree_toc({ is_auto_number:true, documment_selector:'.markdown-body', ztreeStyle: { width:'260px', overflow: 'auto', position: 'fixed', 'z-index': 2147483647, border: '0px none', left: '0px', top: '0px' } }); }); //--> </script> 
+
+      
+    </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/08/27/Oracle数据库转SqlServer常见语法问题/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Zero</a></p>
+        <p><span>发布时间:</span>2016-08-27, 00:27:36</p>
+        <p><span>最后更新:</span>2016-08-27, 00:27:52</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/08/27/Oracle数据库转SqlServer常见语法问题/" title="">http://yoursite.com/2016/08/27/Oracle数据库转SqlServer常见语法问题/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/08/27/Oracle数据库转SqlServer常见语法问题/　　作者: Zero" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/08/24/hello-world/">
+                    Hello World
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/08/24/hello-world/" class="archive-article-date">
-      <time datetime="2016-08-24T15:34:53.369Z" itemprop="datePublished">08-24</time>
-</a>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tags-Oracle-SqlServer"><span class="toc-number">2.</span> <span class="toc-text">tags: Oracle SqlServer</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
         </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/24/hello-world/">Hello World</a>
-    </h1>
-  
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"　| Tomorrow　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
 
-        <div class="article-info info-on-archive">
-          
+    
+</div>
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+
+
+
+
+
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/08/24/hello-world/" title="下一篇: Hello World">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/08/27/Oracle数据库转SqlServer常见语法问题/">Oracle数据库转SqlServer常见语法问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/24/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
