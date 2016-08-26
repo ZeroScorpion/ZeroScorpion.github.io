@@ -15,29 +15,23 @@
 
 
 
-<meta name="description" content="##Oracle函数对照SqlServer函数
-
-######to_char()与convert()的用法对比
-  Oracle中的to_char()函数：  将时间类型的数据（date、timestamp）转化成特定格式的字符串，  如： 
+<meta name="description" content="Oracle函数对照SqlServer函数
+to_char()与convert()的用法对比  Oracle中的to_char()函数：  将时间类型的数据（date、timestamp）转化成特定格式的字符串，  如： 
 
 to_char ( date ,’ 格式 ‘ );">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oracle数据库转SqlServer常见语法问题">
 <meta property="og:url" content="http://yoursite.com/2016/08/26/Oracle数据库转SqlServer常见语法问题/index.html">
 <meta property="og:site_name" content="Tomorrow">
-<meta property="og:description" content="##Oracle函数对照SqlServer函数
-
-######to_char()与convert()的用法对比
-  Oracle中的to_char()函数：  将时间类型的数据（date、timestamp）转化成特定格式的字符串，  如： 
+<meta property="og:description" content="Oracle函数对照SqlServer函数
+to_char()与convert()的用法对比  Oracle中的to_char()函数：  将时间类型的数据（date、timestamp）转化成特定格式的字符串，  如： 
 
 to_char ( date ,’ 格式 ‘ );">
-<meta property="og:updated_time" content="2016-08-26T16:33:16.467Z">
+<meta property="og:updated_time" content="2016-08-26T16:42:29.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle数据库转SqlServer常见语法问题">
-<meta name="twitter:description" content="##Oracle函数对照SqlServer函数
-
-######to_char()与convert()的用法对比
-  Oracle中的to_char()函数：  将时间类型的数据（date、timestamp）转化成特定格式的字符串，  如： 
+<meta name="twitter:description" content="Oracle函数对照SqlServer函数
+to_char()与convert()的用法对比  Oracle中的to_char()函数：  将时间类型的数据（date、timestamp）转化成特定格式的字符串，  如： 
 
 to_char ( date ,’ 格式 ‘ );">
 
@@ -315,10 +309,8 @@ to_char ( date ,’ 格式 ‘ );">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>##Oracle函数对照SqlServer函数</p>
-<ul>
-<li><p>######<strong><code>to_char()</code>与<code>convert()</code>的用法对比</strong></p>
-<p>  Oracle中的<code>to_char()</code>函数：<br>  将时间类型的数据（<code>date</code>、<code>timestamp</code>）转化成特定格式的字符串，<br>  如： </p>
+        <h2 id="Oracle函数对照SqlServer函数"><a href="#Oracle函数对照SqlServer函数" class="headerlink" title="Oracle函数对照SqlServer函数"></a>Oracle函数对照SqlServer函数</h2><ul>
+<li><h6 id="to-char-与convert-的用法对比"><a href="#to-char-与convert-的用法对比" class="headerlink" title="to_char()与convert()的用法对比"></a><strong><code>to_char()</code>与<code>convert()</code>的用法对比</strong></h6><p>  Oracle中的<code>to_char()</code>函数：<br>  将时间类型的数据（<code>date</code>、<code>timestamp</code>）转化成特定格式的字符串，<br>  如： </p>
 <blockquote>
 <p>to_char ( date ,’ 格式 ‘ ); </p>
 <a id="more"></a>
@@ -332,9 +324,9 @@ to_char(select_date,'yyyy-MM-dd')
 convert(varchar(10),select_date,120)
 </code></pre>
 <p>  convert（）函数中的style规定了转化的数据格式，SqlServer中规定好的style如下：</p>
-<p>  | Style ID | Style 格式 |<br>  | ——–   | :—-:  |<br>  |100 或者 0| mon dd yyyy hh:miAM （或者 PM） |<br>  |101| mm/dd/yy |<br>  |102| yy.mm.dd |<br>  |103 |dd/mm/yy |<br>  |104 |dd.mm.yy |<br>  |105 |dd-mm-yy |<br>  |106 ||dd mon yy |<br>  |107 |Mon dd, yy |<br>  |108 |hh:mm:ss |<br>  |109 或者 9 |mon dd yyyy hh:mi:ss:mmmAM（或者 PM） |<br>  |110 |mm-dd-yy |<br>  |111 |yy/mm/dd |<br>  |112 |yymmdd |<br>  |113 或者 13 |dd mon yyyy hh:mm:ss:mmm(24h) |<br>  |114 |hh:mi:ss:mmm(24h) ||<br>  |120 或者 20 |yyyy-mm-dd hh:mi:ss(24h) |<br>  |121 或者 21| yyyy-mm-dd hh:mi:ss.mmm(24h) |<br>  |126 |yyyy-mm-ddThh:mm:ss.mmm（没有空格） |<br>  |130 |dd mon yyyy hh:mi:ss:mmmAM |<br>  |131 |dd/mm/yy hh:mi:ss:mmmAM |</p>
+<p>  | Style ID | Style 格式 |<br>  | ——–   | :—-:  |<br>  | 100 或者 0| mon dd yyyy hh:miAM （或者 PM） |<br>  | 101| mm/dd/yy |<br>  | 102| yy.mm.dd |<br>  | 103 | dd/mm/yy |<br>  | 104 | dd.mm.yy |<br>  | 105 | dd-mm-yy |<br>  | 106 | dd mon yy |<br>  | 107 | Mon dd, yy |<br>  | 108 | hh:mm:ss |<br>  | 109 或者 9 | mon dd yyyy hh:mi:ss:mmmAM（或者 PM） |<br>  | 110 | mm-dd-yy |<br>  | 111 | yy/mm/dd |<br>  | 112 | yymmdd |<br>  | 113 或者 13 | dd mon yyyy hh:mm:ss:mmm(24h) |<br>  | 114 | hh:mi:ss:mmm(24h) ||<br>  | 120 或者 20 | yyyy-mm-dd hh:mi:ss(24h) |<br>  | 121 或者 21| yyyy-mm-dd hh:mi:ss.mmm(24h) |<br>  | 126 | yyyy-mm-ddThh:mm:ss.mmm（没有空格） |<br>  | 130 | dd mon yyyy hh:mi:ss:mmmAM |<br>  | 131 | dd/mm/yy hh:mi:ss:mmmAM |</p>
 </li>
-<li><p>######<strong><code>sysdate</code>与<code>getdate()</code>的用法对比</strong><br>  Oracle数据库中系统的当前时间可以通过sysdate来获取，而在SqlServer中获取系统时间的方法为getdate（）。</p>
+<li><h6 id="sysdate与getdate-的用法对比"><a href="#sysdate与getdate-的用法对比" class="headerlink" title="sysdate与getdate()的用法对比"></a><strong><code>sysdate</code>与<code>getdate()</code>的用法对比</strong></h6><p>  Oracle数据库中系统的当前时间可以通过sysdate来获取，而在SqlServer中获取系统时间的方法为getdate（）。</p>
 </li>
 </ul>
 
@@ -348,7 +340,7 @@ convert(varchar(10),select_date,120)
         <p><span>本文标题:</span><a href="/2016/08/26/Oracle数据库转SqlServer常见语法问题/">Oracle数据库转SqlServer常见语法问题</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Zero</a></p>
         <p><span>发布时间:</span>2016-08-26, 23:23:23</p>
-        <p><span>最后更新:</span>2016-08-27, 00:33:16</p>
+        <p><span>最后更新:</span>2016-08-27, 00:42:29</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/08/26/Oracle数据库转SqlServer常见语法问题/" title="Oracle数据库转SqlServer常见语法问题">http://yoursite.com/2016/08/26/Oracle数据库转SqlServer常见语法问题/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/08/26/Oracle数据库转SqlServer常见语法问题/　　作者: Zero" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -378,7 +370,7 @@ convert(varchar(10),select_date,120)
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Oracle函数对照SqlServer函数"><span class="toc-number">1.</span> <span class="toc-text">Oracle函数对照SqlServer函数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#to-char-与convert-的用法对比"><span class="toc-number">1.0.0.0.1.</span> <span class="toc-text">to_char()与convert()的用法对比</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#sysdate与getdate-的用法对比"><span class="toc-number">1.0.0.0.2.</span> <span class="toc-text">sysdate与getdate()的用法对比</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
         
     </div>
     <style>
